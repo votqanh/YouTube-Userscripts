@@ -1,5 +1,5 @@
-# YouTube-Tampermonkey
-Collection of useful Tampermonkey userscripts for YouTube
+# YouTube-Userscripts
+A collection of useful YouTube user scripts
 
 Script #:
 1. Double Click to Like YouTube Comments
