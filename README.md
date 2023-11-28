@@ -5,7 +5,7 @@ Scripts:
 1. Double Click to Like YouTube Comments
 - Double click on a comment to like. Double click again to remove like. Replies supported.
 
-![image](https://github.com/votqanh/YouTube-Userscripts/assets/84301202/eec99724-f83d-418e-bb98-c7cdff6ad3cc)
+![Alt Text](https://im2.ezgif.com/tmp/ezgif-2-4bf18d9a58.gif)
 
 
 2. Move YouTube Comments
