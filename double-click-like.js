@@ -29,6 +29,7 @@
             });
         }
 
+        // prevent highlight when double clicking
         preventHighlight(videoBox);
         preventHighlight(notifBox);
 
@@ -39,6 +40,7 @@
         function addDbl(el) {
             waitForKeyElements(el, function(jNode) {
                 jNode[0].addEventListener('dblclick', function(e) {
+                    // if not double clicking in input field
                     if (e.target.id != "contenteditable-root") {
                         e.target.closest(el).querySelector("#like-button .yt-spec-touch-feedback-shape__fill").click();
                     }
