@@ -1,7 +1,7 @@
 # YouTube-Userscripts
 A collection of useful YouTube user scripts
 
-Script #:
+Scripts:
 1. Double Click to Like YouTube Comments
  - Double click on a comment to like. Double click again to remove like. Replies supported.
    
