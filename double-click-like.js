@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click to Like YouTube Comments
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      1.0
 // @description  Double click on a comment to like. Double click again to remove like.
 // @author       votqanh
 // @match        *://*.youtube.com/*
