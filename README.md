@@ -10,3 +10,5 @@ Scripts:
 
 2. Move YouTube Comments
 - Move YouTube comments to the side where live chat would be and put them in a scroll box
+
+![movecmt](https://github.com/votqanh/YouTube-Userscripts/assets/84301202/bc638a11-ef5d-48d0-b8d6-756b761d65de)
