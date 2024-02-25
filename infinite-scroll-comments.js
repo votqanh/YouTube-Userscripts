@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Move YouTube Comments
+// @name         YouTube Comments Infinite Scroll
 // @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  Move YouTube comments to the side where live chat would be and put them in a scroll box
+// @version      2.0
+// @description  Put YouTube Comments in an infinite scroll box
 // @author       votqanh
 // @match        *://*.youtube.com/*
 // @exclude      *://*.youtube.com/playlist*
@@ -14,7 +14,7 @@
 (function() {
     'use strict';
 
-    var comments = "#sections.ytd-comments"
+    var comments = "#sections.ytd-comments:not([static-comments-header])"
 
     window.addEventListener('load', () => {
 
