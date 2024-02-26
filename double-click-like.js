@@ -16,8 +16,7 @@
     'use strict';
 
     window.addEventListener('load', function() {
-        var videoBox = "#comments";
-        var notifBox = "ytd-comments.ytd-multi-page-menu-renderer";
+        var cmtBox = "#main.ytd-comment-renderer";
 
         function preventHighlight(el) {
             waitForKeyElements(el, function(jNode) {
@@ -30,11 +29,10 @@
         }
 
         // prevent highlight when double clicking
-        preventHighlight(videoBox);
-        preventHighlight(notifBox);
+        preventHighlight(cmtBox);
 
 
-        var cmt = "ytd-comment-renderer#comment";
+        var cmt = "ytd-comment-thread-renderer #comment";
         var reply = "[is-reply]";
 
         function addDbl(el) {
