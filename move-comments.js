@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         YouTube Comments Infinite Scroll
+// @name         Move YouTube Comments
 // @namespace    http://tampermonkey.net/
 // @version      2.0
-// @description  Put YouTube Comments in an infinite scroll box
+// @description  Move YouTube Comments to where live chat would be and put them in an infinite scroll box
 // @author       votqanh
 // @match        *://*.youtube.com/*
 // @exclude      *://*.youtube.com/playlist*
