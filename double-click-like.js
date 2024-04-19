@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click to Like YouTube Comments
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1.0
 // @description  Double click on a comment to like. Double click again to remove like.
 // @author       votqanh
 // @match        *://*.youtube.com/*
@@ -16,22 +16,6 @@
     'use strict';
 
     window.addEventListener('load', function() {
-        var cmtBox = "#main.ytd-comment-renderer";
-
-        function preventHighlight(el) {
-            waitForKeyElements(el, function(jNode) {
-                jNode[0].addEventListener('mousedown', function(e) {
-                    if (e.detail > 1 && e.target.id != "contenteditable-root") {
-                        e.preventDefault();
-                    }
-                });
-            });
-        }
-
-        // prevent highlight when double clicking
-        preventHighlight(cmtBox);
-
-
         var cmt = "ytd-comment-thread-renderer #comment";
         var reply = "[is-reply]";
 
@@ -41,6 +25,13 @@
                     // if not double clicking in input field
                     if (e.target.id != "contenteditable-root") {
                         e.target.closest(el).querySelector("#like-button .yt-spec-touch-feedback-shape__fill").click();
+                    }
+                });
+
+                // prevent highlight when double clicking
+                jNode[0].addEventListener('mousedown', function(e) {
+                    if (e.detail > 1 && e.target.id != "contenteditable-root") {
+                        e.preventDefault();
                     }
                 });
             });
