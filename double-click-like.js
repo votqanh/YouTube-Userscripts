@@ -1,43 +1,49 @@
 // ==UserScript==
-// @name         Double Click to Like YouTube Comments
-// @namespace    http://tampermonkey.net/
-// @version      1.1.0
-// @description  Double click on a comment to like. Double click again to remove like.
-// @author       votqanh
-// @match        *://*.youtube.com/*
-// @require      https://code.jquery.com/jquery-latest.min.js
-// @require      https://git.io/vMmuf
-// @grant        GM_addStyle
+// @name        Double Click to Like YouTube Comments
+// @namespace   http://tampermonkey.net/
+// @version     2.0
+// @description Double click on a comment to like. Double click again to remove like.
+// @author      votqanh
+// @match       *://*.youtube.com/*
 // ==/UserScript==
-
-/* globals jQuery, $, waitForKeyElements */
 
 (function() {
     'use strict';
 
-    window.addEventListener('load', function() {
-        var cmt = "ytd-comment-thread-renderer #comment";
-        var reply = "[is-reply]";
+    function addDblClickHandler(el) {
+        const commentsContainer = document.querySelector('body');
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                mutation.addedNodes.forEach(node => {
+                    if (node.nodeType === Node.ELEMENT_NODE && node.querySelector(el)) {
+                        node.addEventListener('dblclick', function(e) {
+                            // if not double clicking in input field
+                            if (e.target.id !== "contenteditable-root") {
+                                const likeButton = e.target.closest(el)?.querySelector("#like-button .yt-spec-touch-feedback-shape__fill");
+                                if (likeButton) {
+                                    likeButton.click();
+                                }
+                            }
+                        });
 
-        function addDbl(el) {
-            waitForKeyElements(el, function(jNode) {
-                jNode[0].addEventListener('dblclick', function(e) {
-                    // if not double clicking in input field
-                    if (e.target.id != "contenteditable-root") {
-                        e.target.closest(el).querySelector("#like-button .yt-spec-touch-feedback-shape__fill").click();
-                    }
-                });
-
-                // prevent highlight when double clicking
-                jNode[0].addEventListener('mousedown', function(e) {
-                    if (e.detail > 1 && e.target.id != "contenteditable-root") {
-                        e.preventDefault();
+                        // prevent highlight when double clicking
+                        node.addEventListener('mousedown', function(e) {
+                            if (e.detail > 1 && e.target.id !== "contenteditable-root") {
+                                e.preventDefault();
+                            }
+                        });
                     }
                 });
             });
-        }
+        });
 
-        addDbl(cmt);
-        addDbl(reply);
-    });
+        const config = { childList: true, subtree: true };
+        observer.observe(commentsContainer, config);
+    }
+
+    const cmt = "ytd-comment-thread-renderer #comment";
+    const reply = "#main.ytd-comment-view-model";
+
+    addDblClickHandler(cmt);
+    addDblClickHandler(reply);
 })();
